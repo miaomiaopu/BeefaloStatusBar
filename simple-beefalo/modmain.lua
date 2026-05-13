@@ -165,12 +165,12 @@ local CONFIG = {
     SCALE = SCALE,
     BADGE_COLORS = BADGE_COLORS,
 
-    BASE_X = (OFFSETS.X * OFFSETS.X_MULT) + OFFSETS.X_FINE,
-    BASE_Y = (128 * SCALE_OFFSET) + (OFFSETS.Y * OFFSETS.Y_MULT) + OFFSETS.Y_FINE,
+    BASE_X = -200 + (OFFSETS.X * OFFSETS.X_MULT) + OFFSETS.X_FINE,
+    BASE_Y = (OFFSETS.Y * OFFSETS.Y_MULT) + OFFSETS.Y_FINE,
 
     ROOT_X = 0,
     ROOT_Y = 0,
-    ROOT_Y_HIDDEN = -130 / SCALE_OFFSET
+    ROOT_X_HIDDEN = 300
 }
 
 
@@ -178,8 +178,7 @@ local CONFIG = {
 
 local BeefaloStatusBar = require "widgets/beefaloStatusBar"
 AddClassPostConstruct("widgets/controls", function(self, owner)
-    self.BeefaloStatusBar = self.bottom_root:AddChild(BeefaloStatusBar(owner, CONFIG))
-    self.BeefaloStatusBar:MoveToBack()
+    self.BeefaloStatusBar = self.topright_root:AddChild(BeefaloStatusBar(owner, CONFIG))
 end)
 
 local InventoryBar = require "widgets/inventorybar"

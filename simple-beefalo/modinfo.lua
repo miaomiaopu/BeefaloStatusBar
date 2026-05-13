@@ -258,14 +258,14 @@ configuration_options =
     },
     {
         name = "SEPARATOR_POSITIONING_X",
-        label = "X轴定位",
+        label = "X轴定位（右侧水平位置）",
         options = {{description = "", data = 1}},
         default = 1
     },
     {
         name = "OffsetX",
         label = "X轴偏移（水平）",
-        hover = "负值 - 向左移动、正值 - 向右移动",
+        hover = "控制水平位置\n负值 - 向左移动（远离时钟）、正值 - 向右移动（靠近时钟）",
         options = offsets,
         default = 0
     },
@@ -285,14 +285,14 @@ configuration_options =
     },
     {
         name = "SEPARATOR_POSITIONING_Y",
-        label = "Y轴定位",
+        label = "Y轴定位（垂直位置）",
         options = {{description = "", data = 1}},
         default = 1
     },
     {
         name = "OffsetY",
         label = "Y轴偏移（垂直）",
-        hover = "负值 - 向下移动、正值 - 向上移动",
+        hover = "控制垂直位置\n负值 - 向下移动、正值 - 向上移动",
         options = offsets,
         default = 0
     },
