@@ -1,5 +1,5 @@
 name = "Simple Beefalo Status Bar"
-version = "2026.05.13.0"
+version = "2026.05.13.1"
 author = "miaomiaopu"
 description = [[
 骑乘皮弗娄牛时显示状态栏
