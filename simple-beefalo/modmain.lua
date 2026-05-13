@@ -155,7 +155,7 @@ local CONFIG = {
     SCALE = SCALE,
     BADGE_COLORS = BADGE_COLORS,
 
-    BASE_X = -300 + GetModConfigData("OffsetX", CLIENT_CONFIG),
+    BASE_X = -480 + GetModConfigData("OffsetX", CLIENT_CONFIG),
     BASE_Y = -40 + GetModConfigData("OffsetY", CLIENT_CONFIG),
 
     ROOT_X = 0,

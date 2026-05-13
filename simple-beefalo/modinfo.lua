@@ -261,7 +261,7 @@ configuration_options =
         name = "OffsetX",
         label = "水平偏移",
         hover = "调整水平位置\n负值 - 向左移动、正值 - 向右移动",
-        options = GenerateNumericOptions(-500, 500, 5, 0),
+        options = GenerateNumericOptions(-500, 500, 10, 0),
         default = 0
     },
     {
