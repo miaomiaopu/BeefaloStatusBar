@@ -40,24 +40,24 @@ local BeefaloStatusBar = Class(Widget, function(self, owner, config)
 
     self.BADGE_CONFIG = {theme = self.CONFIG.THEME, brightness = self.CONFIG.BG_BRIGHTNESS, opacity = self.CONFIG.BG_OPACITY}
 
+    self.hungerBadge = self.root:AddChild(BeefaloBadge(self.BADGE_CONFIG, {215 / 255, 165 / 255, 0 / 255, 1}, "status_hunger", nil, true))
+    self.hungerBadge:SetPosition(self.badgeStartPosition - 130, 0)
+    self.hungerBadge:Hide()
+
     self.healthBadge = self.root:AddChild(BeefaloBadge(self.BADGE_CONFIG, {174 / 255, 21 / 255, 21 / 255, 1}, "status_health", nil, self.CONFIG.HEALTH_CLEAR_BG))
-    self.healthBadge:SetPosition(self.badgeStartPosition, 0)
+    self.healthBadge:SetPosition(self.badgeStartPosition + self.badgeWidth, 0)
 
     self.domesticationBadge = self.root:AddChild(BeefaloBadge(self.BADGE_CONFIG, self.CONFIG.BADGE_COLORS.ORNERY, nil, nil, true))
-    self.domesticationBadge:SetPosition(self.badgeStartPosition + self.badgeWidth, 0)
+    self.domesticationBadge:SetPosition(self.badgeStartPosition + self.badgeWidth * 2, 0)
     self.domesticationBadge.icon:SetTexture("minimap/minimap_data.xml", "beefalo_domesticated.png")
 
     self.obedienceBadge = self.root:AddChild(BeefaloBadge(self.BADGE_CONFIG, self.CONFIG.BADGE_COLORS.OBEDIENCE, nil, nil, true))
-    self.obedienceBadge:SetPosition(self.badgeStartPosition + self.badgeWidth * 2, 0)
+    self.obedienceBadge:SetPosition(self.badgeStartPosition + self.badgeWidth * 3, 0)
     self.obedienceBadge.icon:SetTexture(GetInventoryItemAtlas("whip.tex"), "whip.tex")
 
     self.timerBadge = self.root:AddChild(BeefaloBadge(self.BADGE_CONFIG, self.CONFIG.BADGE_COLORS.TIMER, nil, true, true))
-    self.timerBadge:SetPosition(self.badgeStartPosition + self.badgeWidth * 3, 0)
+    self.timerBadge:SetPosition(self.badgeStartPosition + self.badgeWidth * 4, 0)
     self.timerBadge.icon:SetTexture(GetInventoryItemAtlas("saddle_basic.tex"), "saddle_basic.tex")
-
-    self.hungerBadge = self.root:AddChild(BeefaloBadge(self.BADGE_CONFIG, {215 / 255, 165 / 255, 0 / 255, 1}, "status_hunger", nil, true))
-    self.hungerBadge:SetPosition(self.badgeStartPosition + self.badgeWidth * 4, -130)
-    self.hungerBadge:Hide()
 
 
     self.CONFIG.ROOT_X = self.badgeWidth / 2 - (self.badgeGap * 2)
@@ -196,11 +196,8 @@ function BeefaloStatusBar:SetHungerVisibility(visible, transition)
     end
 
     transition = transition or 0.4
-    local ROOT_POS_X = (self.isHidden and self.CONFIG.ROOT_X_HIDDEN or 0) + (visible and 0 - self.badgeGap * 2 or self.badgeWidth / 2 - (self.badgeGap * 2))
-    self.root:MoveTo(self.root:GetPosition(), {x = ROOT_POS_X, y = self.CONFIG.ROOT_Y, z = 0}, transition)
-    local badgeTransition = transition == 0 and transition or transition / 1.5
     if visible then self.hungerBadge:Show() end
-    self.hungerBadge:MoveTo(self.hungerBadge:GetPosition(), {x = self.badgeStartPosition + self.badgeWidth * 4, y = visible and 0 or -130, z = 0}, badgeTransition, function()
+    self.hungerBadge:MoveTo(self.hungerBadge:GetPosition(), {x = visible and self.badgeStartPosition or self.badgeStartPosition - 130, y = 0, z = 0}, transition, function()
         if not visible then self.hungerBadge:Hide() end
     end)
 end
