@@ -1,6 +1,6 @@
 name = "骑牛状态栏"
-version = "1.0"
-author = "个人修改版"
+version = "2026.05.13.0"
+author = "miaomiaopu"
 description = [[
 骑乘皮弗娄牛时显示状态栏
 
@@ -8,6 +8,7 @@ description = [[
 健康、驯化、顺从、骑乘计时器、鞍具使用次数、饥饿
 
 基于 MNK 的 Beefalo Status Bar 修改
+喂食计时器重置修复来自 莲华可爱捏·ω·
 ]]
 
 forumthread = ""
@@ -26,16 +27,12 @@ icon_atlas = "icon.xml"
 icon = "icon.tex"
 
 
+-- 可选按键列表
 local KEYS = {
-    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
-    "Minus", "Equals", "Backspace", "Leftbracket", "Rightbracket", "Backslash", "Semicolon", "Enter", "Period", "Slash",
-    "Left", "Right", "Up", "Down", "Insert", "Delete", "Home", "End", "Pageup", "Pagedown", "Print", "Scrollock", "Pause",
-    "Escape", "Tilde", "Tab", "Capslock", "Shift", "LShift", "RShift", "Ctrl", "LCtrl", "RCtrl", "Alt", "LAlt", "RAlt", "Space",
-    "KP_1", "KP_2", "KP_3", "KP_4", "KP_5", "KP_6", "KP_7", "KP_8", "KP_9", "KP_0",
-    "KP_Divide", "KP_Multiply", "KP_Minus", "KP_Plus", "KP_Enter", "KP_Period", "KP_Equals",
+    "RAlt"
 }
 
+-- 可选颜色列表
 local COLORS = {
     {name = "ORANGE", description = "橙色"},
     {name = "ORANGE_ALT", description = "橙色代替"},
@@ -56,6 +53,7 @@ local function InsertOption(options, new_option, default)
     options[#options + 1] = new_option
 end
 
+-- 数值选项生成器
 local function GenerateNumericOptions(start, total, step, default, config)
     local config = config or {}
     local prefix = config.prefix or ""
@@ -75,6 +73,7 @@ local function GenerateNumericOptions(start, total, step, default, config)
     return options
 end
 
+-- 颜色选项生成器
 local function GenerateColorOptions(default)
     local colorOptions = {}
     for i = 1, #COLORS do
@@ -84,6 +83,7 @@ local function GenerateColorOptions(default)
     return colorOptions
 end
 
+-- 快捷键选项生成器
 local function GenerateKeyboardOptions(default)
     local options = {{description = "禁用", data = false, hover = "切换将被禁用"}}
 
@@ -95,10 +95,12 @@ local function GenerateKeyboardOptions(default)
     return options
 end
 
+-- 偏移量选项预生成
 local offsets = GenerateNumericOptions(-200, 200, 5, 0)
 local fineOffsets = GenerateNumericOptions(-50, 50, 1, 0)
 local offsetMultipliers = GenerateNumericOptions(2, 20, 1, 1, {first = {data = 1, description = "无"}, suffix = "x"})
 
+-- ===== 配置项定义 =====
 configuration_options =
 {
     {
@@ -156,10 +158,10 @@ configuration_options =
         label = "主题",
         hover = "更改徽章的主题",
         options = {
-            {description = "熔炉", data = "TheForge", hover = "默认"},
-            {description = "默认主题", data = "Default", hover = "使用默认游戏主题、与大多数HUD主题模组兼容"}
+            {description = "默认主题", data = "Default", hover = "默认"},
+            {description = "熔炉", data = "TheForge", hover = "使用熔炉主题风格"}
         },
-        default = "TheForge"
+        default = "Default"
     },
     {
         name = "Scale",
