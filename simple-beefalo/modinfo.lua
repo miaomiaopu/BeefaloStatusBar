@@ -95,11 +95,6 @@ local function GenerateKeyboardOptions(default)
     return options
 end
 
--- 偏移量选项预生成
-local offsets = GenerateNumericOptions(-200, 200, 5, 0)
-local fineOffsets = GenerateNumericOptions(-50, 50, 1, 0)
-local offsetMultipliers = GenerateNumericOptions(2, 20, 1, 1, {first = {data = 1, description = "无"}, suffix = "x"})
-
 -- ===== 配置项定义 =====
 configuration_options =
 {
@@ -257,57 +252,23 @@ configuration_options =
         default = "GREEN"
     },
     {
-        name = "SEPARATOR_POSITIONING_X",
-        label = "X轴定位（右侧水平位置）",
+        name = "SEPARATOR_POSITIONING",
+        label = "位置偏移",
         options = {{description = "", data = 1}},
         default = 1
     },
     {
         name = "OffsetX",
-        label = "X轴偏移（水平）",
-        hover = "控制水平位置\n负值 - 向左移动（远离时钟）、正值 - 向右移动（靠近时钟）",
-        options = offsets,
+        label = "水平偏移",
+        hover = "调整水平位置\n负值 - 向左移动、正值 - 向右移动",
+        options = GenerateNumericOptions(-500, 500, 5, 0),
         default = 0
-    },
-    {
-        name = "OffsetXMult",
-        label = "X轴偏移倍数",
-        hover = "\"X轴偏移\"设置的倍数\n对\"精调\"设置没有影响",
-        options = offsetMultipliers,
-        default = 1
-    },
-    {
-        name = "OffsetXFine",
-        label = "X轴偏移微调",
-        hover = "精调X轴偏移",
-        options = fineOffsets,
-        default = 0
-    },
-    {
-        name = "SEPARATOR_POSITIONING_Y",
-        label = "Y轴定位（垂直位置）",
-        options = {{description = "", data = 1}},
-        default = 1
     },
     {
         name = "OffsetY",
-        label = "Y轴偏移（垂直）",
-        hover = "控制垂直位置\n负值 - 向下移动、正值 - 向上移动",
-        options = offsets,
-        default = 0
-    },
-    {
-        name = "OffsetYMult",
-        label = "Y轴偏移倍数",
-        hover = "\"Y轴偏移\"设置的倍数\n对\"精调\"设置没有影响",
-        options = offsetMultipliers,
-        default = 1
-    },
-    {
-        name = "OffsetYFine",
-        label = "Y轴偏移微调",
-        hover = "精调Y轴偏移",
-        options = fineOffsets,
+        label = "垂直偏移",
+        hover = "调整垂直位置\n负值 - 向下移动、正值 - 向上移动",
+        options = GenerateNumericOptions(-500, 500, 5, 0),
         default = 0
     }
 }

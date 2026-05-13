@@ -138,17 +138,7 @@ local BADGE_COLORS = {
     TIMER = COLORS[GetModConfigData("COLOR_TIMER", CLIENT_CONFIG)]
 }
 
-local OFFSETS = {
-    X = GetModConfigData("OffsetX", CLIENT_CONFIG),
-    X_MULT = GetModConfigData("OffsetXMult", CLIENT_CONFIG),
-    X_FINE = GetModConfigData("OffsetXFine", CLIENT_CONFIG),
-    Y = GetModConfigData("OffsetY", CLIENT_CONFIG),
-    Y_MULT = GetModConfigData("OffsetYMult", CLIENT_CONFIG),
-    Y_FINE = GetModConfigData("OffsetYFine", CLIENT_CONFIG)
-}
-
 local SCALE = GetModConfigData("Scale", CLIENT_CONFIG)
-local SCALE_OFFSET = 1 + (SCALE - 1) / 3
 
 
 local CONFIG = {
@@ -165,8 +155,8 @@ local CONFIG = {
     SCALE = SCALE,
     BADGE_COLORS = BADGE_COLORS,
 
-    BASE_X = -200 + (OFFSETS.X * OFFSETS.X_MULT) + OFFSETS.X_FINE,
-    BASE_Y = (OFFSETS.Y * OFFSETS.Y_MULT) + OFFSETS.Y_FINE,
+    BASE_X = -200 + GetModConfigData("OffsetX", CLIENT_CONFIG),
+    BASE_Y = GetModConfigData("OffsetY", CLIENT_CONFIG),
 
     ROOT_X = 0,
     ROOT_Y = 0,
