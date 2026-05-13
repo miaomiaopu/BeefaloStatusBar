@@ -1,4 +1,4 @@
-name = "骑牛状态栏"
+name = "Simple Beefalo Status Bar"
 version = "2026.05.13.0"
 author = "miaomiaopu"
 description = [[
@@ -9,6 +9,9 @@ description = [[
 
 基于 MNK 的 Beefalo Status Bar 修改
 喂食计时器重置修复来自 莲华可爱捏·ω·
+AI 辅助制作
+
+Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3725322029
 ]]
 
 forumthread = ""

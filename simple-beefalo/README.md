@@ -1,4 +1,4 @@
-# 骑牛状态栏 (Beefalo Status Bar)
+# Simple Beefalo Status Bar
 
 > 本 MOD 由 AI 辅助制作（Claude Code）
 
@@ -12,6 +12,8 @@
 - **基于**：
   - [Beefalo Status Bar](https://steamcommunity.com/sharedfiles/filedetails/?id=2477889104) (by MNK) — 原始架构与 UI 组件
   - [骑牛状态栏](https://steamcommunity.com/sharedfiles/filedetails/?id=3715373342) (by MNK, 修改: 莲华可爱捏·ω·) — 喂食计时器重置修复
+
+发布地址：[Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3725322029)
 
 ## 功能
 
@@ -35,8 +37,17 @@
 
 ## 安装
 
-1. 将 `simple-beefalo` 文件夹放入 `Don't Starve Together/mods/` 目录
-2. 在游戏的 MOD 管理界面启用「骑牛状态栏」
+### Steam 创意工坊（推荐）
+
+在 [Steam 创意工坊](https://steamcommunity.com/sharedfiles/filedetails/?id=3725322029) 中点击「订阅」，启动游戏后 MOD 将自动下载启用。
+
+### 手动安装
+
+1. 下载 `simple-beefalo` 文件夹
+2. 放入 `Don't Starve Together/mods/` 目录
+3. 在游戏的 MOD 管理界面启用「Simple Beefalo Status Bar」
+
+> 注意：此 MOD 为服务端 MOD，所有客户端均需订阅。单人使用无需额外操作。
 
 > 注意：此为服务端 MOD，需要 `all_clients_require_mod = true`（已默认设置）。
 
